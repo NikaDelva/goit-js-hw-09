@@ -13,7 +13,7 @@ flatpickr("#datetime-picker", {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (selectedDates[0] <= Date.now()) {
-      window.alert(`Please choose a date in the future!`);
+      Notiflix.Notify.warning(`Please choose a date in the future!`);
       startBtnEl.setAttribute('disabled', true);
     } else {
       startBtnEl.removeAttribute('disabled', true);
@@ -29,16 +29,17 @@ const timer = {
       const ms = this.deadline - Date.now();
       if (ms <= 0) {
         this.stop();
+        startBtnEl.setAttribute('disabled', false)
         return
       }
       let { days, hours, minutes, seconds } = this.convertMs(ms);
-      rootSelector.querySelector('[data-days]').innerHTML =
+      rootSelector.querySelector('[data-days]').textContent =
         this.addLeadingZero(days);
-      rootSelector.querySelector('[data-hours]').innerHTML =
+      rootSelector.querySelector('[data-hours]').textContent =
         this.addLeadingZero(hours);
-      rootSelector.querySelector('[data-minutes]').innerHTML =
+      rootSelector.querySelector('[data-minutes]').textContent =
         this.addLeadingZero(minutes);
-      rootSelector.querySelector('[data-seconds]').innerHTML =
+      rootSelector.querySelector('[data-seconds]').textContent =
         this.addLeadingZero(seconds);
     }, 1000);
   },
@@ -70,7 +71,7 @@ const timer = {
 
 };
     
-startBtnEl.addEventListener('click', timer.start.bind(timer));
+startBtnEl.addEventListener('click', timertextContentnd(timer));
 
 //step 1 ??
 //step 2 викликати функцію flatpickr за документацією (який аргумент їй передати?), що ініціалізує бібліотеку
