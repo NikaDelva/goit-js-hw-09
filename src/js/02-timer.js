@@ -71,7 +71,7 @@ const timer = {
 
 };
     
-startBtnEl.addEventListener('click', timertextContentnd(timer));
+startBtnEl.addEventListener('click', timer.start.bind(timer));
 
 //step 1 ??
 //step 2 викликати функцію flatpickr за документацією (який аргумент їй передати?), що ініціалізує бібліотеку
